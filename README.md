@@ -15,22 +15,70 @@
 
 ---
 
+## System Design
+
+To ensure a highly scalable and maintainable application, the system is divided into three main components:
+
+### 1. AI Training Module
+- **Purpose**: Responsible for training and retraining AI models to improve trading predictions.
+- **Key Features**:
+  - Data collection and preprocessing from multiple cryptocurrency exchanges.
+  - Model training and validation using TensorFlow or PyTorch.
+  - Scheduled retraining using historical data.
+  - Exporting models for integration with the backend.
+- **Best Practices**:
+  - Use distributed computing for large datasets (e.g., Apache Spark, Dask).
+  - Implement version control for machine learning models (e.g., MLflow, DVC).
+  - Store training data and models in a scalable storage solution (e.g., AWS S3).
+
+### 2. Django REST API Backend
+- **Purpose**: Acts as the core of the system, providing APIs for the frontend and integrating the AI models.
+- **Key Features**:
+  - Exposes endpoints for trade execution, market data retrieval, and user portfolio management.
+  - Handles business logic, including applying AI predictions to trading strategies.
+  - Manages user authentication and authorization.
+- **Best Practices**:
+  - Use Django REST Framework (DRF) for building APIs.
+  - Implement throttling, caching, and pagination for performance optimization.
+  - Secure sensitive data with environment variables and libraries like `django-environ`.
+  - Use Celery with Redis or RabbitMQ for asynchronous tasks like trade execution.
+
+### 3. NX ReactJS Frontend
+- **Purpose**: Provides a user-friendly interface for monitoring and managing trading activities.
+- **Key Features**:
+  - Dashboard for viewing market trends, portfolio performance, and trade history.
+  - Configuration interface for setting trading strategies and preferences.
+  - Real-time notifications for executed trades and market alerts.
+- **Best Practices**:
+  - Use Nx for modular and scalable frontend architecture.
+  - Implement state management with Redux Toolkit or Zustand.
+  - Optimize for performance with lazy loading and code splitting.
+  - Ensure responsiveness and accessibility (ARIA standards).
+
+---
+
 ## Technologies Used
 
+### AI Training Module
+- **Frameworks**: TensorFlow, PyTorch
+- **Data Processing**: Pandas, NumPy
+- **Storage**: AWS S3, Google Cloud Storage
+- **Versioning**: MLflow, DVC
+
 ### Backend
-- **Programming Language**: Python
-- **AI Frameworks**: TensorFlow, PyTorch, or Scikit-learn
-- **Data Analysis**: Pandas, NumPy
-- **API Integration**: Binance API, Coinbase API, or other exchange APIs
+- **Framework**: Django REST Framework
 - **Database**: PostgreSQL, MongoDB
+- **Task Queue**: Celery with Redis/RabbitMQ
 
 ### Frontend
 - **Framework**: NX ReactJS
 - **Visualization**: Chart.js, D3.js
+- **State Management**: Redux Toolkit
 
 ### Deployment
 - **Containerization**: Docker
 - **Orchestration**: Kubernetes
+- **CI/CD**: GitHub Actions, Jenkins
 - **Cloud Platforms**: AWS, GCP, or Azure
 
 ---
@@ -39,9 +87,8 @@
 
 ### Prerequisites
 - Python 3.8 or higher
-- Virtual environment tools like `venv` or `conda`
-- Docker (optional, for deployment)
 - Node.js and NX CLI for frontend development
+- Docker (optional, for deployment)
 - API keys from cryptocurrency exchanges (e.g., Binance, Coinbase)
 
 ### Steps
@@ -67,9 +114,9 @@
      API_KEY=your_api_key
      API_SECRET=your_api_secret
      ```
-5. Run the bot:
+5. Run the backend server:
    ```bash
-   python main.py
+   python manage.py runserver
    ```
 
 #### Frontend Setup
@@ -86,19 +133,34 @@
    nx serve
    ```
 
+#### AI Training Module Setup
+1. Navigate to the AI module directory:
+   ```bash
+   cd coinpilotai/ai_training
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the training script:
+   ```bash
+   python train.py
+   ```
+
 ---
 
 ## Usage
 - Customize your trading strategies by editing the `config.json` file in the backend.
 - Use the frontend dashboard to monitor trading activities, configure settings, and view portfolio performance.
+- Retrain AI models using the AI training module as needed.
 
 ---
 
 ## Roadmap
-- Implement advanced AI models for better market predictions.
-- Develop a user-friendly web dashboard using NX ReactJS.
-- Add support for multiple trading platforms and exchanges.
-- Enhance security features for API keys and user data.
+- Enhance AI models with reinforcement learning.
+- Integrate support for additional cryptocurrency exchanges.
+- Add more advanced analytics and visualizations to the dashboard.
+- Implement multi-language support for global users.
 
 ---
 
