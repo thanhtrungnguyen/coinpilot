@@ -24,8 +24,8 @@
 - **API Integration**: Binance API, Coinbase API, or other exchange APIs
 - **Database**: PostgreSQL, MongoDB
 
-### Frontend (Optional Dashboard)
-- **Framework**: React.js or Angular
+### Frontend
+- **Framework**: NX ReactJS
 - **Visualization**: Chart.js, D3.js
 
 ### Deployment
@@ -41,13 +41,16 @@
 - Python 3.8 or higher
 - Virtual environment tools like `venv` or `conda`
 - Docker (optional, for deployment)
+- Node.js and NX CLI for frontend development
 - API keys from cryptocurrency exchanges (e.g., Binance, Coinbase)
 
 ### Steps
+
+#### Backend Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/CoinPilotAI.git
-   cd CoinPilotAI
+   git clone https://github.com/thanhtrungnguyen/coinpilotai.git
+   cd coinpilotai/backend
    ```
 2. Create a virtual environment and activate it:
    ```bash
@@ -69,17 +72,31 @@
    python main.py
    ```
 
+#### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd coinpilotai/frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Serve the application in development mode:
+   ```bash
+   nx serve
+   ```
+
 ---
 
 ## Usage
-- Customize your trading strategies by editing the `config.json` file.
-- Monitor trading activities and portfolio performance through logs or a web-based dashboard (if implemented).
+- Customize your trading strategies by editing the `config.json` file in the backend.
+- Use the frontend dashboard to monitor trading activities, configure settings, and view portfolio performance.
 
 ---
 
 ## Roadmap
 - Implement advanced AI models for better market predictions.
-- Develop a user-friendly web dashboard for visualization and control.
+- Develop a user-friendly web dashboard using NX ReactJS.
 - Add support for multiple trading platforms and exchanges.
 - Enhance security features for API keys and user data.
 
@@ -112,4 +129,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 For questions or suggestions, please contact:
 - Email: your-email@example.com
-- GitHub: [your-username](https://github.com/your-username)
+- GitHub: [thanhtrungnguyen](https://github.com/thanhtrungnguyen)
