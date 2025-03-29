@@ -1,0 +1,3 @@
+[submodule "coinpilot_model"]
+	path = coinpilot_model
+	url = https://github.com/thanhtrungnguyen/coinpilot_model
