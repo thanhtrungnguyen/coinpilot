@@ -1,3 +1,6 @@
 [submodule "coinpilot_model"]
 	path = coinpilot_model
-	url = https://github.com/thanhtrungnguyen/coinpilot_model
+	url = https://github.com/thanhtrungnguyen/coinpilot_model.git
+[submodule "coinpilot_backend"]
+	path = coinpilot_backend
+	url = https://github.com/thanhtrungnguyen/coinpilot_backend.git
